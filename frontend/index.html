@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Training Institute Finder</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<nav><div class="brand">🎓 Training Institute Finder</div><div><a href="index.html">Home</a><a href="login.html">Login</a><a href="register.html" class="btn">Register</a></div></nav>
+<header class="hero"><div><span class="badge">Kakinada • Visakhapatnam</span><h1>Find the right training institute for your career.</h1><p>Search institutes, explore courses, view addresses and navigate directly to the location.</p>
+<div class="search"><input id="search" placeholder="Search institute or course..."><select id="city"><option value="">All cities</option><option>Kakinada</option><option>Visakhapatnam</option></select><button onclick="searchInstitutes()">Search</button></div></div></header>
+<section><h2>Popular Courses</h2><div class="chips"><button onclick="quick('AWS')">AWS</button><button onclick="quick('Java')">Java</button><button onclick="quick('Python')">Python</button><button onclick="quick('DevOps')">DevOps</button><button onclick="quick('Digital Marketing')">Digital Marketing</button><button onclick="quick('Cyber Security')">Cyber Security</button></div></section>
+<section><div class="section-head"><h2>Training Institutes</h2><button class="outline" onclick="loadInstitutes()">Show All</button></div><div id="results" class="grid"></div></section>
+<footer>© 2026 Training Institute Finder</footer>
+<script src="js/app.js"></script></body></html>

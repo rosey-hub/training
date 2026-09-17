@@ -1,0 +1,4 @@
+const API=window.location.origin+'/api';
+async function submitAuth(url,body){const r=await fetch(API+url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json();if(!r.ok)throw Error(d.message||'Request failed');return d}
+document.getElementById('loginForm')?.addEventListener('submit',async e=>{e.preventDefault();try{const d=await submitAuth('/auth/login',{email:email.value,password:password.value});localStorage.setItem('token',d.token);location.href='index.html'}catch(x){msg.textContent=x.message}});
+document.getElementById('registerForm')?.addEventListener('submit',async e=>{e.preventDefault();try{await submitAuth('/auth/register',{name:name.value,email:email.value,password:password.value});location.href='login.html'}catch(x){msg.textContent=x.message}});

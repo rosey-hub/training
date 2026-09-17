@@ -1,0 +1,6 @@
+const API=window.location.origin+'/api';
+async function loadInstitutes(q='',city=''){const box=document.getElementById('results');box.innerHTML='<p>Loading...</p>';try{const r=await fetch(`${API}/institutes?q=${encodeURIComponent(q)}&city=${encodeURIComponent(city)}`);const data=await r.json();box.innerHTML=data.map(i=>`<article class="institute"><img src="${i.image||'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=900&q=80'}"><div class="content"><h3>${esc(i.name)}</h3><p>⭐ ${i.rating||'New'} • ${esc(i.city)}</p><p class="muted">📍 ${esc(i.address)}</p><p>${esc(i.courses||'Courses available')}</p><div class="actions"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(i.latitude+', '+i.longitude)}">Navigate</a></div></div></article>`).join('')||'<p>No institutes found.</p>'}catch(e){box.innerHTML='<p>Backend is not connected. Start the server and try again.</p>'}}
+function searchInstitutes(){loadInstitutes(document.getElementById('search').value,document.getElementById('city').value)}
+function quick(x){document.getElementById('search').value=x;searchInstitutes()}
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+loadInstitutes();
